@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: manychat-ai-agent
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: MANYCHAT_API_TOKEN
+        sync: false
+      - key: GEMINI_KEYS
+        sync: false
+      - key: MANYCHAT_TOKEN_ZAP1
+        sync: false

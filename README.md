@@ -3,6 +3,8 @@
 **Data:** 07/02/2026
 **Status:** 🟢 Online no Render (Cloud)
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
 ---
 
 ## 📂 O que tem neste backup?
