@@ -1,4 +1,4 @@
-# ManyChat AI Agent (Dra. Adriele) - VERSÃO FINAL CLOUD
+# ManyChat AI Agent (Dr Nathaly Silvestre) - VERSÃO FINAL CLOUD
 
 **Data:** 07/02/2026
 **Status:** 🟢 Online no Render (Cloud)
