@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const BASE_URL = 'https://manychat-ai-agent.onrender.com';
-// const BASE_URL = 'http://localhost:3000'; // For Local Test
+// const BASE_URL = 'https://manychat-ai-agent.onrender.com';
+const BASE_URL = 'http://localhost:3000'; // For Local Test
 
 async function simulateChat(botId, userName, userCountry) {
     console.log(`\n🤖 === SIMULANDO CONVERSA NO ${botId.toUpperCase()} ===`);
@@ -11,7 +11,7 @@ async function simulateChat(botId, userName, userCountry) {
     console.log(`\n👤 User: Hola!`);
     await sendMessage(botId, userId, "Hola!");
 
-    await wait(2000);
+    await wait(10000);
 
     // TURN 2: User says Name/Country
     console.log(`\n👤 User: Soy ${userName} de ${userCountry}`);

@@ -28,7 +28,7 @@ Se o seu computador pifar ou o servidor nuvem apagar, você usa este arquivo par
 2.  Suba estes arquivos.
 3.  Conecte no Render.com.
 4.  Coloque as Chaves Secretas (Environment Variables):
-    *   `GEMINI_API_KEY`: (Sua chave do Google)
+    *   `GEMINI_KEYS`: (Sua chave do Google, separe por vírgula se tiver várias)
     *   `MANYCHAT_API_TOKEN`: (Seu token do ManyChat)
 
 ---
