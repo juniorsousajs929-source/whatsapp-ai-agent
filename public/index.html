@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Oficial - Protocolo D22</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00E676;
+            /* Vibrant Green */
+            --accent: #64FFDA;
+            /* Cyan Accent */
+            --dark-bg: #0A192F;
+            /* Deep Navy */
+            --card-bg: rgba(17, 34, 64, 0.85);
+            /* Glass Navy */
+            --text-main: #E6F1FF;
+            --text-muted: #8892B0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-main);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top Accent Line */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .highlight-text {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Inputs */
+        input {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.1);
+        }
+
+        /* Button */
+        .btn {
+            background: linear-gradient(135deg, #00B4DB 0%, #0083B0 100%);
+            /* Professional Blue Gradient */
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 180, 219, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
+        /* Loading Animation */
+        .loader-container {
+            display: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Screens */
+        #screen-2,
+        #screen-3,
+        #screen-blocked {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SCREEN 1: NAME -->
+        <div id="screen-1" class="card">
+            <div style="margin-bottom: 20px;">
+                <span
+                    style="background: rgba(100, 255, 218, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Paso
+                    1 de 2</span>
+            </div>
+
+            <h1>Verificación de Acceso 🔒</h1>
+
+            <p>
+                Antes de enviarte con nuestra <span class="highlight-text">Nutricionista Oficial</span>, necesitamos
+                confirmar tus datos para personalizar tu atendimento.
+            </p>
+
+            <input type="text" id="inputName" placeholder="Escribe tu Primer Nombre aquí..." autocomplete="off">
+
+            <button class="btn" onclick="nextStep()">Continuar ➤</button>
+
+            <div class="disclaimer">
+                Sistema seguro verificado por Meta & WhatsApp API.
+            </div>
+        </div>
+
+        <!-- SCREEN 2: COUNTRY -->
+        <div id="screen-2" class="card">
+            <div style="margin-bottom: 20px;">
+                <span
+                    style="background: rgba(100, 255, 218, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Paso
+                    Final</span>
+            </div>
+
+            <h1>Confirmación de Región 🌍</h1>
+
+            <p>
+                Hola <span id="displayName" class="highlight-text"></span>. Para asignarte al agente correcto, por favor
+                confirma tu país de residencia actual.
+            </p>
+
+            <input type="text" id="inputCountry" placeholder="Ej: México, España, USA..." autocomplete="off">
+
+            <button class="btn" onclick="verifyLocation()">Verificar Disponibilidad ➤</button>
+
+            <div class="disclaimer">
+                Esto nos ayuda a configurar la moneda y horarios de atención.
+            </div>
+        </div>
+
+        <!-- LOADER -->
+        <div id="loader" class="card loader-container">
+            <div class="spinner"></div>
+            <h3>Verificando disponibilad...</h3>
+            <p style="font-size: 0.9rem;">Conectando con servidor seguro...</p>
+        </div>
+
+        <!-- SCREEN 3: SUCCESS (REDIRECT) -->
+        <div id="screen-3" class="card">
+            <div style="font-size: 3rem; margin-bottom: 10px;">✅</div>
+            <h1 style="color: var(--primary);">¡Acceso Autorizado!</h1>
+            <p>
+                Perfecto <span id="displayNameFinal"></span>. Hemos reservado tu cupo.
+                <br><br>
+                Nuestra <span class="highlight-text">Nutricionista Oficial</span> ya está al tanto de tu caso y lista
+                para atenderte en WhatsApp.
+            </p>
+
+            <a href="/rotator" class="btn"
+                style="text-decoration: none; display: block; background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                ABRIR WHATSAPP AHORA 💬
+            </a>
+
+            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;">
+                Serás redirigida automáticamente en 3 segundos...
+            </p>
+        </div>
+
+        <!-- SCREEN BLOCKED (DECEPTIVE FLOW) -->
+        <div id="screen-blocked" class="card">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
+            <h1 style="color: #64FFDA;">¡Felicidades!</h1>
+            <p>
+                Tu perfil ha sido <strong>APROBADO</strong>. Tenemos cupos especiales para <span
+                    id="displayCountryBlocked" style="font-weight: 700; color: white;"></span>.
+            </p>
+            <p style="font-size: 0.9rem;">
+                Por favor, ingresa tu WhatsApp para que nuestra Nutricionista te contacte personalmente ahora mismo:
+            </p>
+            <input type="tel" placeholder="+58..." style="margin-bottom: 10px;">
+            <button class="btn" onclick="alert('¡Gracias! En breve te escribiremos. 😉')">Confirmar Cupo</button>
+        </div>
+
+    </div>
+
+    <script>
+        let userName = "";
+
+        function nextStep() {
+            const name = document.getElementById('inputName').value.trim();
+            if (!name) return alert("Por favor, escribe tu nombre.");
+
+            userName = name;
+            document.getElementById('displayName').innerText = userName;
+            document.getElementById('displayNameFinal').innerText = userName;
+
+            // Transition
+            document.getElementById('screen-1').style.display = 'none';
+            document.getElementById('screen-2').style.display = 'block';
+            setTimeout(() => document.getElementById('inputCountry').focus(), 100);
+        }
+
+        function verifyLocation() {
+            const country = document.getElementById('inputCountry').value.trim().toLowerCase();
+            if (!country) return alert("Por favor, escribe tu país.");
+
+            // Show Loader
+            document.getElementById('screen-2').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+
+            // Filter Logic 🛡️
+            const blockedList = ['venezuela', 'vene', 'vsl', 'vzl', 'venezuelana', 'cuba', 'cub', 'nicaragua', 'br', 'brasil', 'brazil'];
+            let isBlocked = blockedList.some(blocked => country.includes(blocked));
+
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+
+                if (isBlocked) {
+                    document.getElementById('displayCountryBlocked').innerText = document.getElementById('inputCountry').value;
+                    document.getElementById('screen-blocked').style.display = 'block';
+                } else {
+                    document.getElementById('screen-3').style.display = 'block';
+                    // Auto Redirect
+                    setTimeout(() => window.location.href = "/rotator", 3000);
+                }
+            }, 2000);
+        }
+
+        // Enter Key Support
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    if (this.id === 'inputName') nextStep();
+                    if (this.id === 'inputCountry') verifyLocation();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

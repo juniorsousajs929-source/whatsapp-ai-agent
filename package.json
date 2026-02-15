@@ -1,0 +1,17 @@
+{
+    "name": "manychat-ai-agent",
+    "version": "1.0.0",
+    "description": "AI Agent for ManyChat using Google Gemini",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "node --watch src/server.js"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.24.1",
+        "axios": "^1.6.0",
+        "body-parser": "^1.20.0",
+        "dotenv": "^16.0.0",
+        "express": "^4.18.0"
+    }
+}
