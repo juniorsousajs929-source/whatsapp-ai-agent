@@ -133,7 +133,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    * Guatemala: 285.00 GTQ
    * Costa Rica (Colones): ₡18.677,00
 
-   - "https://go.hotmart.com/O103265408E"
+   - "https://hotm.io/Aceder-el-plan-ahora-registrarse"
    - "☝️☝️☝️ ¡Todo el material llega a tu correo! Tienes acceso ilimitado y nuestro apoyo. Avísame al terminar para sumarte al grupo VIP. ¿De acuerdo?".
 
 10. POS-VENTA (SI EL CLIENTE DICE: "YA PAGUÉ", "YA COMPRÉ", "LISTO"):
