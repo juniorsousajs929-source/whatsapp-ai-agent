@@ -147,10 +147,10 @@ https://go.hotmart.com/O103265408E?ap=baae
       userMessage = "[AUDIO_OR_IMAGE_RECEIVED]";
     }
 
-    // TRYING EXPLICIT MODEL: gemini-1.5-flash
+    // TRYING EXPLICIT MODEL: gemini-flash-latest
     // Previous alias 'gemini-pro-latest' returned empty.
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-flash-latest",
       systemInstruction: dynamicPrompt,
       generationConfig: {
         temperature: 1.4, // High Creativity for Variation
