@@ -149,98 +149,96 @@ https://go.hotmart.com/O103265408E?ap=baae
 
     // TRYING EXPLICIT MODEL: gemini-2.0-flash
     // Previous alias 'gemini-pro-latest' returned empty.
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      systemInstruction: dynamicPrompt,
+    model: "gemini-1.5-flash",
       generationConfig: {
-        temperature: 1.4, // High Creativity for Variation
+      temperature: 1.4, // High Creativity for Variation
         topP: 0.95,
-        topK: 40,
-        maxOutputTokens: 800, // Increased to accommodate long sales messages
+          topK: 40,
+            maxOutputTokens: 800, // Increased to accommodate long sales messages
       }
-    });
+  });
 
-    // Initialize history for user if not exists
-    if (!userHistory[sessionKey]) {
-      userHistory[sessionKey] = [];
-    }
-
-    // Start chat with existing history
-    const chat = model.startChat({
-      history: userHistory[sessionKey]
-    });
-
-    const result = await chat.sendMessage(userMessage);
-    let text = result.response.text();
-    console.log(`[AI RAW OUTPUT]: ${text.substring(0, 50)}...`);
-
-    // --- NAME EXTRACTION LOGIC (Capture & Save) ---
-    // Pattern: "Encantada de conocerte, [Name]" or similar variations
-    const nameMatch = text.match(/Encantada de conocerte, ([A-Za-zÁ-Úá-ú]+)/i) ||
-      text.match(/Hola ([A-Za-zÁ-Úá-ú]+),/i);
-
-    if (nameMatch && nameMatch[1]) {
-      const extractedName = nameMatch[1];
-      console.log(`👤 Name Detected: ${extractedName}. Saving to ManyChat...`);
-      // Saving to Custom Field 'user_name'
-      // We use setCustomFieldByName asynchronously but don't await to avoid blocking response
-      setCustomFieldByName(userId, "user_name", extractedName, botId).catch(err =>
-        console.error("❌ Failed to save user_name:", err)
-      );
-    }
-
-    // --- AUTO-TAGGING LOGIC (Closing Reached) ---
-    // Detect if the AI sent the price/offer (Step 8/9)
-    // Keywords: "PAGO ÚNICO", "34,97 USD", "hotmart.com"
-    if (text.includes("PAGO ÚNICO") || text.includes("hotmart.com") || text.includes("ACCESO VIP CON DESCUENTO")) {
-      console.log(`🎯 Closing Detected for ${userId}. Adding tag 'Chegou ate o final'...`);
-      addTagByName(userId, "Chegou ate o final", botId).catch(err =>
-        console.error("❌ Failed to add Closing Tag:", err)
-      );
-    }
-
-    // Update our memory AND SAVE TO DISK
-    userHistory[sessionKey] = await chat.getHistory();
-    saveHistory(); // PERSISTENCE CHECKPOINT
-
-    // CLEANUP: Remove stars/asterisks to prevent broken links or bold text
-    text = text.replace(/\*/g, '');
-
-    // CLEANUP: EMOJI STRIPPER (Zero Tolerance) 🚫😊
-    text = text.replace(/\p{Extended_Pictographic}/gu, '');
-    text = text.replace(/\u200D/g, ''); // Remove Zero Width Joiner
-    text = text.trim();
-
-    // ANTI-ECHO 2.0: Deep Check (Redundant Safety)
-    // 1. Check if AI repeated the user input (Hallucination)
-    const cleanResponse = text.trim().toLowerCase();
-    const cleanInput = userMessage.trim().toLowerCase();
-
-    // If response is almost identical to input (loop risk)
-    if (cleanResponse === cleanInput || (cleanResponse.includes(cleanInput) && cleanResponse.length < cleanInput.length + 10)) {
-      console.error("⚠️ ANTI-ECHO TRIGGERED (Internal): AI repeated user input. Intercepting.");
-      // Fallback en ESPAÑOL (Corrigiendo error de idioma)
-      return "Entiendo perfectamente. Y cuéntame: ¿cuál es tu mayor dificultad hoy para perder peso? ¿La falta de saciedad o el metabolismo?";
-    }
-
-    return text; // Humanized response
-
-  } catch (error) {
-    // Log detailed error to console and file
-    const errorMsg = `[${new Date().toISOString()}] Error: ${error.message}\n`;
-    console.error(errorMsg);
-    fs.appendFileSync('error.log', errorMsg);
-
-    // Check specific error types
-    if (error.message.includes("429")) {
-      return "(Error: Límite excedido) Espera 1 minuto e intenta de nuevo.";
-    }
-    if (error.message.includes("404") || error.message.includes("not found")) {
-      return `(Error: Modelo no encontrado: ${error.message})`;
-    }
-
-    return "Disculpa, tengo un pequeño problema de señal técnica. ¿Me podrías escribir de nuevo en 2 minutos?";
+  // Initialize history for user if not exists
+  if (!userHistory[sessionKey]) {
+    userHistory[sessionKey] = [];
   }
+
+  // Start chat with existing history
+  const chat = model.startChat({
+    history: userHistory[sessionKey]
+  });
+
+  const result = await chat.sendMessage(userMessage);
+  let text = result.response.text();
+  console.log(`[AI RAW OUTPUT]: ${text.substring(0, 50)}...`);
+
+  // --- NAME EXTRACTION LOGIC (Capture & Save) ---
+  // Pattern: "Encantada de conocerte, [Name]" or similar variations
+  const nameMatch = text.match(/Encantada de conocerte, ([A-Za-zÁ-Úá-ú]+)/i) ||
+    text.match(/Hola ([A-Za-zÁ-Úá-ú]+),/i);
+
+  if (nameMatch && nameMatch[1]) {
+    const extractedName = nameMatch[1];
+    console.log(`👤 Name Detected: ${extractedName}. Saving to ManyChat...`);
+    // Saving to Custom Field 'user_name'
+    // We use setCustomFieldByName asynchronously but don't await to avoid blocking response
+    setCustomFieldByName(userId, "user_name", extractedName, botId).catch(err =>
+      console.error("❌ Failed to save user_name:", err)
+    );
+  }
+
+  // --- AUTO-TAGGING LOGIC (Closing Reached) ---
+  // Detect if the AI sent the price/offer (Step 8/9)
+  // Keywords: "PAGO ÚNICO", "34,97 USD", "hotmart.com"
+  if (text.includes("PAGO ÚNICO") || text.includes("hotmart.com") || text.includes("ACCESO VIP CON DESCUENTO")) {
+    console.log(`🎯 Closing Detected for ${userId}. Adding tag 'Chegou ate o final'...`);
+    addTagByName(userId, "Chegou ate o final", botId).catch(err =>
+      console.error("❌ Failed to add Closing Tag:", err)
+    );
+  }
+
+  // Update our memory AND SAVE TO DISK
+  userHistory[sessionKey] = await chat.getHistory();
+  saveHistory(); // PERSISTENCE CHECKPOINT
+
+  // CLEANUP: Remove stars/asterisks to prevent broken links or bold text
+  text = text.replace(/\*/g, '');
+
+  // CLEANUP: EMOJI STRIPPER (Zero Tolerance) 🚫😊
+  text = text.replace(/\p{Extended_Pictographic}/gu, '');
+  text = text.replace(/\u200D/g, ''); // Remove Zero Width Joiner
+  text = text.trim();
+
+  // ANTI-ECHO 2.0: Deep Check (Redundant Safety)
+  // 1. Check if AI repeated the user input (Hallucination)
+  const cleanResponse = text.trim().toLowerCase();
+  const cleanInput = userMessage.trim().toLowerCase();
+
+  // If response is almost identical to input (loop risk)
+  if (cleanResponse === cleanInput || (cleanResponse.includes(cleanInput) && cleanResponse.length < cleanInput.length + 10)) {
+    console.error("⚠️ ANTI-ECHO TRIGGERED (Internal): AI repeated user input. Intercepting.");
+    // Fallback en ESPAÑOL (Corrigiendo error de idioma)
+    return "Entiendo perfectamente. Y cuéntame: ¿cuál es tu mayor dificultad hoy para perder peso? ¿La falta de saciedad o el metabolismo?";
+  }
+
+  return text; // Humanized response
+
+} catch (error) {
+  // Log detailed error to console and file
+  const errorMsg = `[${new Date().toISOString()}] Error: ${error.message}\n`;
+  console.error(errorMsg);
+  fs.appendFileSync('error.log', errorMsg);
+
+  // Check specific error types
+  if (error.message.includes("429")) {
+    return "(Error: Límite excedido) Espera 1 minuto e intenta de nuevo.";
+  }
+  if (error.message.includes("404") || error.message.includes("not found")) {
+    return `(Error: Modelo no encontrado: ${error.message})`;
+  }
+
+  return "Disculpa, tengo un pequeño problema de señal técnica. ¿Me podrías escribir de nuevo en 2 minutos?";
+}
 }
 
 module.exports = { generateResponse };
