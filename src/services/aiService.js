@@ -95,8 +95,8 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
     const randomStyle = styles[Math.floor(Math.random() * styles.length)];
     const randomFormat = formats[Math.floor(Math.random() * formats.length)];
 
-    // META-INSTRUCTION: Forces the model to adopt the style drastically
-    const dynamicPrompt = systemInstruction + `\n\n=== 🎭 MODO ATRIZ (VARIACIÓN OBLIGATORIA) ===\nNO SEAS ROBÓTICA. ACTÚA CON ESTE ESTILO AHORA:\n👉 ESTILO: ${randomStyle}\n👉 FORMATO: ${randomFormat}\n\n(Ignora este estilo SOLAMENTE si pone en riesgo la venta, pero intenta adaptarlo).`;
+    // META-INSTRUCTION: Forces the model to adopt a subtle style without breaking the script
+    const dynamicPrompt = systemInstruction + `\n\n=== REGLA DE ADHERENCIA (CRÍTICA) ===\nTienes que seguir el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso. No inventes pasos. Usa este estilo sutilmente:\n👉 ESTILO: ${randomStyle}\n👉 FORMATO: ${randomFormat}\n\n(Tu prioridad absoluta es el guión. El estilo es secundario).`;
 
     // HANDLE AUDIO/IMAGE INPUTS (AND GHOST TEXT)
     // ManyChat sends URLs for attachments. If message is a URL or empty, treat as non-text.
@@ -153,9 +153,9 @@ https://go.hotmart.com/O103265408E?ap=baae
       model: "gemini-flash-latest",
       systemInstruction: dynamicPrompt,
       generationConfig: {
-        temperature: 1.4, // High Creativity for Variation
+        temperature: 0.4, // Lowered for strict adherence to script
         topP: 0.95,
-        topK: 40,
+        topK: 20,
         maxOutputTokens: 800, // Increased to accommodate long sales messages
       }
     });
