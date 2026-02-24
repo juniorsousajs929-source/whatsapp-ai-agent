@@ -40,8 +40,8 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
     // Initialize Gemini with this specific key
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    // META-INSTRUCTION: Forces the model to adopt the script strictly
-    const dynamicPrompt = systemInstruction + `\n\n=== REGLA DE ORO (CRÍTICA) ===\nTienes que seguir el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso de forma ESTRICTA Y LITERAL.\nNo inventes texto adicional ni cambies las palabras de los mensajes de venta. Responde con las frases exactas del guión.`;
+    // META-INSTRUCTION: Forces the model to adopt the script strictly but fluently
+    const dynamicPrompt = systemInstruction + `\n\n=== REGLAS DE ORO (CRÍTICO) ===\n1. Sigue el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso de forma LITERAL.\n2. NO CORTES LOS MENSAJES A LA MITAD. Asegúrate de terminar la frase.\n3. OBLIGATORIO: TODO mensaje debe terminar con una PREGUNTA o "GANCHO" para que la cliente responda (ej: "¿Te parece bien?", "¿Cuántos kilos pesas?"). NUNCA termines una interacción en silencio.`;
 
     // HANDLE AUDIO/IMAGE INPUTS (AND GHOST TEXT)
     // ManyChat sends URLs for attachments. If message is a URL or empty, treat as non-text.
@@ -98,10 +98,10 @@ https://go.hotmart.com/O103265408E?ap=baae
       model: "gemini-flash-latest",
       systemInstruction: dynamicPrompt,
       generationConfig: {
-        temperature: 0.1, // Near zero for exact script copy
+        temperature: 0.5, // Natural flow without heavy hallucinations
         topP: 0.95,
-        topK: 20,
-        maxOutputTokens: 800, // Increased to accommodate long sales messages
+        topK: 30,
+        maxOutputTokens: 1200, // Safe margin to prevent text cutoff
       }
     });
 
