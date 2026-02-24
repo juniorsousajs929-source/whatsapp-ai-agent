@@ -40,63 +40,8 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
     // Initialize Gemini with this specific key
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    const styles = [
-      // EMOCIONAL / EMPÁTICO
-      "Sé extremadamente empática, como si fueras su mejor amiga escuchando un secreto.",
-      "Muestra mucha compasión, usa palabras suaves y reconfortantes.",
-      "Valida sus sentimientos totalmente ('Te entiendo muchísimo', 'Sé lo duro que es').",
-
-      // AUTORIDAD / PROFESIONAL
-      "Sé directa y con autoridad médica (pero amable). Transmite mucha seguridad.",
-      "Usa un tono de 'Coach' motivadora. ¡Energía alta!",
-      "Explica como si fueras una profesora enseñando algo fascinante.",
-
-      // CASUAL / AMISTOSO
-      "Habla súper relajada, como si estuvieras digitando un mensaje rápido en WhatsApp.",
-      "Usa jerga muy natural y coloquial ('Mira', 'Oye', 'Total').",
-      "Sé divertida y ligera, usa una risa escrita ('jajaja' o 'jeje').",
-      "Sé misteriosa y genera curiosidad ('¿Sabes lo que pasa?...').",
-
-      // HUMANIZACIÓN / ANTI-REPETICIÓN
-      "Reconoce explícitamente algo que ella acaba de decir antes de seguir con el script.",
-      "No uses saludos si ya se saludaron antes. Ve directo al grano con confianza.",
-      "Usa una exclamación de sorpresa o acuerdo ('¡Wow!', '¡Qué bien!', '¡Entiendo perfectamente!').",
-      "Cambia el orden de los párrafos para que no parezca un mensaje predefinido.",
-      "Escribe de forma que parezca que estás reflexionando sobre su caso específico.",
-      "Si ya sabes su nombre, úsalo de forma cariñosa en la mitad de la frase.",
-
-      // ESTRUCTURAL / FORMA
-      "Responde con una PREGUNTA directa para hacerla pensar.",
-      "Usa una METÁFORA o comparación simple para explicar.",
-      "Sé extremadamente BREVE. Máximo 15 palabras.",
-      "Usa una lista numerada rápida (1. tal, 2. cual).",
-      "NO uses ninguna lista. Solo texto fluido y conectado.",
-      "Empieza la frase con 'Y te digo más...'",
-      "Empieza la frase con el nombre de ella (si lo sabes).",
-      "Empieza con '¡Exacto!' o '¡Totalmente!' para mostrar acuerdo fuerte.",
-
-      // VARIACIONES IMPERFECTAS (HUMANAS)
-      "Escribe todo en minúsculas (estilo chat rápido).",
-      "Usa abreviaturas sutiles ('q', 'xq', 'tmb').",
-      "Omite signos de interrogación de apertura (¿).",
-      "Comete un 'typo' intencional y corrígelo en la misma línea (ej: 'dieta... digo, protocolo').",
-      "Repite una palabra para énfasis ('Si, si, examente')."
-    ];
-
-    const formats = [
-      "NO USES EMOJIS hoy.",
-      "Escribe en 2 párrafos cortos.",
-      "Escribe todo en una sola línea.",
-      "Usa puntos suspensivos... para dar pausa.",
-      "Sé extremadamente formal y limpia.",
-      "Usa letras mayúsculas para enfatizar palabras clave (ej: IMPORTANTE)."
-    ];
-
-    const randomStyle = styles[Math.floor(Math.random() * styles.length)];
-    const randomFormat = formats[Math.floor(Math.random() * formats.length)];
-
-    // META-INSTRUCTION: Forces the model to adopt a subtle style without breaking the script
-    const dynamicPrompt = systemInstruction + `\n\n=== REGLA DE ADHERENCIA (CRÍTICA) ===\nTienes que seguir el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso. No inventes pasos. Usa este estilo sutilmente:\n👉 ESTILO: ${randomStyle}\n👉 FORMATO: ${randomFormat}\n\n(Tu prioridad absoluta es el guión. El estilo es secundario).`;
+    // META-INSTRUCTION: Forces the model to adopt the script strictly
+    const dynamicPrompt = systemInstruction + `\n\n=== REGLA DE ORO (CRÍTICA) ===\nTienes que seguir el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso de forma ESTRICTA Y LITERAL.\nNo inventes texto adicional ni cambies las palabras de los mensajes de venta. Responde con las frases exactas del guión.`;
 
     // HANDLE AUDIO/IMAGE INPUTS (AND GHOST TEXT)
     // ManyChat sends URLs for attachments. If message is a URL or empty, treat as non-text.
@@ -153,7 +98,7 @@ https://go.hotmart.com/O103265408E?ap=baae
       model: "gemini-flash-latest",
       systemInstruction: dynamicPrompt,
       generationConfig: {
-        temperature: 0.4, // Lowered for strict adherence to script
+        temperature: 0.1, // Near zero for exact script copy
         topP: 0.95,
         topK: 20,
         maxOutputTokens: 800, // Increased to accommodate long sales messages
