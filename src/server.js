@@ -26,7 +26,7 @@ app.get('/health', (req, res) => {
 // Rotates traffic between multiple WhatsApp numbers to avoid bans
 // PLACEHOLDERS FOR PARTNER - REPLACE WITH YOUR OWN LINKS
 const WHATSAPP_LINKS = [
-    "https://wa.me/message/QANEQB7H2EWQI1"
+    "https://wa.me/message/MZBE3DUUQAXUI1"
 ];
 
 app.get('/rotator', (req, res) => {
