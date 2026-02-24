@@ -52,7 +52,7 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
       "Explica como si fueras una profesora enseñando algo fascinante.",
 
       // CASUAL / AMISTOSO
-      "Habla súper relajada, como si estuvieras enviando un audio rápido.",
+      "Habla súper relajada, como si estuvieras digitando un mensaje rápido en WhatsApp.",
       "Usa jerga muy natural y coloquial ('Mira', 'Oye', 'Total').",
       "Sé divertida y ligera, usa una risa escrita ('jajaja' o 'jeje').",
       "Sé misteriosa y genera curiosidad ('¿Sabes lo que pasa?...').",
