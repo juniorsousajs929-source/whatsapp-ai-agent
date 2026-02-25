@@ -100,8 +100,8 @@ https://go.hotmart.com/O103265408E?ap=baae
       generationConfig: {
         temperature: 0.5, // Natural flow without heavy hallucinations
         topP: 0.95,
-        topK: 30,
-        maxOutputTokens: 1200, // Safe margin to prevent text cutoff
+        topK: 40, // Increased to give the model breathing room in sentence selection
+        maxOutputTokens: 8192, // Max allowed to 100% prevent any cutoffs
       }
     });
 
