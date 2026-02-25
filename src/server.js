@@ -7,6 +7,24 @@ const { setCustomFieldByName } = require('./services/manychatService');
 const { SYSTEM_INSTRUCTION } = require('./config/prompt');
 require('dotenv').config();
 
+// --- LIVE LOGGING INTERCEPTOR ---
+const recentLogs = [];
+const originalLog = console.log;
+const originalError = console.error;
+function captureLog(type, args) {
+    try {
+        const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+        recentLogs.unshift(`[${type}] ${new Date().toISOString()} - ${msg}`);
+        if (recentLogs.length > 200) recentLogs.pop();
+    } catch (e) { }
+}
+console.log = function (...args) { captureLog('INFO', args); originalLog.apply(console, args); };
+console.error = function (...args) { captureLog('ERROR', args); originalError.apply(console, args); };
+
+process.on('uncaughtException', (err) => console.error('UNCAUGHT EXCEPTION:', err.message, err.stack));
+process.on('unhandledRejection', (reason) => console.error('UNHANDLED REJECTION:', reason));
+// --------------------------------
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -124,12 +142,19 @@ async function processAIContext(userId, userMessage, botId) {
     }
 }
 
+app.get('/debug-logs', (req, res) => res.type('text/plain').send(recentLogs.join('\n')));
+
 app.post('/webhook', (req, res) => {
-    const { user_id, message } = req.body;
+    console.log(`[WEBHOOK RAW] Body:`, req.body, `Query:`, req.query);
+
+    // Support alternatives in case ManyChat JSON mapping is different
+    const user_id = req.body.user_id || req.body.subscriber_id || req.body.id;
+    const message = req.body.message || req.body.text || req.body.last_input_text;
     const bot_id = req.query.bot_id || 'default_bot';
 
     // 1. Validate Input
     if (!user_id || !message) {
+        console.error(`[WEBHOOK ERROR] Missing user_id or message. Received:`, req.body);
         return res.status(400).json({ error: 'Missing user_id or message' });
     }
 
