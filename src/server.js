@@ -36,7 +36,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Basic health check (now serves index.html if exists, or this message)
 app.get('/health', (req, res) => {
-    res.send('ManyChat AI Agent is running!');
+    res.send('ManyChat AI Agent is running! (v2)');
 });
 
 // Webhook endpoint for ManyChat
