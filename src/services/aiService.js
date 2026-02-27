@@ -41,7 +41,7 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
     const genAI = new GoogleGenerativeAI(apiKey);
 
     // META-INSTRUCTION: Forces the model to adopt the script strictly but fluently
-    const dynamicPrompt = systemInstruction + `\n\n=== REGLAS DE ORO (CRÍTICO) ===\n1. Sigue el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso de forma LITERAL.\n2. NO CORTES LOS MENSAJES A LA MITAD. Asegúrate de terminar la frase.\n3. OBLIGATORIO: TODO mensaje debe terminar con una PREGUNTA o "GANCHO" para que la cliente responda (ej: "¿Te parece bien?", "¿Cuántos kilos pesas?"). NUNCA termines una interacción en silencio.`;
+    const dynamicPrompt = systemInstruction + `\n\n=== REGLAS DE ORO (CRÍTICO) ===\n1. Sigue el "GUIÓN ESTRATÉGICO DE VENTA" paso a paso de forma LITERAL.\n2. NO CORTES LOS MENSAJES A LA MITAD. Asegúrate de terminar la frase.\n3. OBLIGATORIO: TODO mensaje debe terminar con una PREGUNTA o "GANCHO" para que la cliente responda, EXCEPTO cuando aplique la regla de AGENDAMIENTO Y SILENCIO (en ese caso, acepta la decisión y CIERRA la conversación sin preguntas ni ganchos).`;
 
     // HANDLE AUDIO/IMAGE INPUTS (AND GHOST TEXT)
     // ManyChat sends URLs for attachments. If message is a URL or empty, treat as non-text.

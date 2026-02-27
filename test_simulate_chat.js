@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-// const BASE_URL = 'https://manychat-ai-agent.onrender.com';
-const BASE_URL = 'http://localhost:3000'; // For Local Test
+const BASE_URL = 'https://manychat-ai-agent.onrender.com';
+// const BASE_URL = 'http://localhost:3000'; // For Local Test
 
 async function simulateChat(botId, userName, userCountry) {
     console.log(`\n🤖 === SIMULANDO CONVERSA NO ${botId.toUpperCase()} ===`);
