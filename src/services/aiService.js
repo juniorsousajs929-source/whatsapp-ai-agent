@@ -95,7 +95,7 @@ https://go.hotmart.com/O103265408E?ap=baae
     // TRYING EXPLICIT MODEL: gemini-flash-latest
     // Previous alias 'gemini-pro-latest' returned empty.
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-1.5-flash-latest",
       systemInstruction: dynamicPrompt,
       generationConfig: {
         temperature: 0.5, // Natural flow without heavy hallucinations
