@@ -26,12 +26,7 @@ app.get('/health', (req, res) => {
 // HYDRA ROTATOR - Traffic Distributor 🐍🔀
 // Rotates traffic between multiple WhatsApp numbers to avoid bans
 const WHATSAPP_LINKS = [
-    // "https://wa.me/message/BJNHQE5KTTITE1", // Link 1 (Zap 1) - BANNED 🚫
-    // "https://wa.me/message/4WCL3T3HBGMOP1", // Link 3 (Zap 3 - Novo) - BANNED 🚫
-    // "https://wa.me/message/QLDVM3R4XTKBC1", // Link 4 (Zap 4 - Ativo) ✅
-    "https://wa.me/message/VMP76GNIJYV4B1", // Link 5 (Zap 5 - Ativo) ✅
-    // "https://wa.me/message/KU7GZNBQZKPRN1", // Link 6 (Novo) ✅
-    // Link 2 (JNATJ1) REMOVED due to Ban 🚫
+    "https://wa.me/message/MZBE3DUUQAXUI1" // Link Oficial do Cliente
 ];
 
 app.get('/rotator', (req, res) => {
