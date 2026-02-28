@@ -3,17 +3,15 @@ require('dotenv').config();
 
 const MANYCHAT_API_BASE = 'https://api.manychat.com/fb';
 
+// Helper: Select correct token based on Bot ID
 function getToken(botId) {
-    const tokenMap = {
-        zap2: process.env.MANYCHAT_TOKEN_ZAP2,
-        zap3: process.env.MANYCHAT_TOKEN_ZAP3,
-        zap4: process.env.MANYCHAT_TOKEN_ZAP4,
-        zap5: process.env.MANYCHAT_TOKEN_ZAP5,
-        zap6: process.env.MANYCHAT_TOKEN_ZAP6,
-        zap1: process.env.MANYCHAT_TOKEN_ZAP1
-    };
-    // Prioritize specific bot token, otherwise fallback to the master token
-    return tokenMap[botId] || process.env.MANYCHAT_API_TOKEN;
+    if (botId === 'zap2') return process.env.MANYCHAT_TOKEN_ZAP2;
+    if (botId === 'zap3') return process.env.MANYCHAT_TOKEN_ZAP3;
+    if (botId === 'zap4') return process.env.MANYCHAT_TOKEN_ZAP4;
+    if (botId === 'zap5') return process.env.MANYCHAT_TOKEN_ZAP5;
+    if (botId === 'zap6') return process.env.MANYCHAT_TOKEN_ZAP6;
+    // Default to Zap 1
+    return process.env.MANYCHAT_TOKEN_ZAP1 || process.env.MANYCHAT_API_TOKEN;
 }
 
 async function setCustomFieldByName(subscriberId, fieldName, value, botId = 'zap1') {

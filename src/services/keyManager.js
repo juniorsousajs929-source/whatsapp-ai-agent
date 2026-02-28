@@ -4,28 +4,48 @@ require('dotenv').config();
 function loadKeys() {
     let keys = [];
 
-    // 1. Check comma-separated list
+    // Support comma-separated list
     if (process.env.GEMINI_KEYS) {
-        const raw = process.env.GEMINI_KEYS.split(',');
-        keys = raw.map(k => k.trim()).filter(k => k.length > 0);
+        const splitKeys = process.env.GEMINI_KEYS.split(',').map(k => k.trim()).filter(k => k !== '');
+        keys = keys.concat(splitKeys);
     }
 
-    // 2. Fallback: Check individual keys (legacy support)
-    if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
+    // Individual keys detection with common alternatives
+    const possiblePrefixes = ['GEMINI_API_KEY', 'GOOGLE_API_KEY', 'API_KEY'];
+    possiblePrefixes.forEach(name => {
+        const val = process.env[name];
+        if (val && typeof val === 'string') {
+            const trimmed = val.trim();
+            if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+        }
+    });
 
     let i = 1;
-    while (process.env[`GEMINI_KEY_${i}`]) {
-        keys.push(process.env[`GEMINI_KEY_${i}`]);
+    while (true) {
+        const keyName = `GEMINI_KEY_${i}`;
+        const altName = `GOOGLE_API_KEY_${i}`;
+        const val = process.env[keyName] || process.env[altName];
+
+        if (!val) break;
+
+        if (typeof val === 'string') {
+            const trimmed = val.trim();
+            if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+        }
         i++;
     }
 
-    // Remove duplicates
-    keys = [...new Set(keys)];
+    // Sanitization: Filter empty, short, or invalid strings
+    keys = [...new Set(keys)].filter(k => k && k.length > 20 && k.startsWith('AIza'));
 
     if (keys.length === 0) {
-        console.error("CRITICAL: No GEMINI_API_KEY found in .env!");
+        console.error("❌ CRITICAL: No valid API keys (starting with AIza) found in Render environment!");
     } else {
-        console.log(`KeyManager loaded ${keys.length} API Keys from .env.`);
+        // Safe Debugging: Show first 4 and last 4 of keys in logs
+        console.log(`📡 KeyManager initialized with ${keys.length} rotating keys.`);
+        keys.forEach((k, idx) => {
+            console.log(`   [Key ${idx + 1}]: ${k.substring(0, 4)}...${k.slice(-4)}`);
+        });
     }
 
     return keys;

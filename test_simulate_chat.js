@@ -11,7 +11,7 @@ async function simulateChat(botId, userName, userCountry) {
     console.log(`\n👤 User: Hola!`);
     await sendMessage(botId, userId, "Hola!");
 
-    await wait(10000);
+    await wait(2000);
 
     // TURN 2: User says Name/Country
     console.log(`\n👤 User: Soy ${userName} de ${userCountry}`);

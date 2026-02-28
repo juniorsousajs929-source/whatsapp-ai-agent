@@ -1,9 +1,7 @@
-# ManyChat AI Agent (Dr Nathaly Silvestre) - VERSÃO FINAL CLOUD
+# ManyChat AI Agent (Dra. Adriele) - VERSÃO FINAL CLOUD
 
 **Data:** 07/02/2026
 **Status:** 🟢 Online no Render (Cloud)
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 ---
 
@@ -30,7 +28,7 @@ Se o seu computador pifar ou o servidor nuvem apagar, você usa este arquivo par
 2.  Suba estes arquivos.
 3.  Conecte no Render.com.
 4.  Coloque as Chaves Secretas (Environment Variables):
-    *   `GEMINI_KEYS`: (Sua chave do Google, separe por vírgula se tiver várias)
+    *   `GEMINI_API_KEY`: (Sua chave do Google)
     *   `MANYCHAT_API_TOKEN`: (Seu token do ManyChat)
 
 ---
