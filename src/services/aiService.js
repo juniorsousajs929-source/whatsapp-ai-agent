@@ -131,12 +131,17 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
         currentSessionHistory = userHistory[sessionKey];
       }
 
-      console.log(`🧠 [DEBUG] Session: ${sessionKey} | History Length: ${currentSessionHistory.length} msgs`);
-
-      const chat = model.startChat({ history: currentSessionHistory });
-
-      const result = await chat.sendMessage(processedMessage);
-      let text = result.response.text();
+      let text;
+      try {
+        console.log(`💬 Enviando chat com histórico tamanho: ${currentSessionHistory.length}`);
+        const chat = model.startChat({ history: currentSessionHistory });
+        const result = await chat.sendMessage(processedMessage);
+        text = result.response.text();
+        console.log(`✅ IA Respondeu: ${text.substring(0, 50)}...`);
+      } catch (geminiError) {
+        console.error("🔴 EXPLOSÃO CRÍTICA NO GEMINI API:", geminiError.message, geminiError.stack);
+        throw new Error("Falha no LLM: " + geminiError.message);
+      }
 
       // --- NAME EXTRACTION ---
       const nameMatch = text.match(/Encantada de conocerte, ([A-Za-zÁ-Úá-ú]+)/i) ||

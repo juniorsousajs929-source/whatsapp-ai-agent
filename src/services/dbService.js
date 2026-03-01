@@ -34,12 +34,18 @@ async function connectDB() {
     }
 
     try {
-        await mongoose.connect(uri);
+        console.log("🟡 Tentando conectar ao MongoDB...");
+        await mongoose.connect(uri, {
+            serverSelectionTimeoutMS: 2500, // Timeout curto (2.5s) para Fallback rápido
+            socketTimeoutMS: 2500,
+            connectTimeoutMS: 2500
+        });
         isConnected = true;
         console.log("🟢 Conectado ao MongoDB (Memória Persistente Ativada)!");
         return true;
     } catch (error) {
-        console.error("🔴 Erro ao conectar ao MongoDB:", error.message);
+        console.error("🔴 Erro de Timeout/Conexão ao MongoDB. Bot usando Memória Arquivo.", error.message);
+        isConnected = false; // Força Fallback Seguro
         return false;
     }
 }

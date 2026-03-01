@@ -35,11 +35,11 @@ function loadKeys() {
         i++;
     }
 
-    // Sanitization: Filter empty, short, or invalid strings
-    keys = [...new Set(keys)].filter(k => k && k.length > 20 && k.startsWith('AIza'));
+    // Sanitization: Filter empty or extra short strings, and clean up stray quotes
+    keys = [...new Set(keys)].map(k => k.replace(/['"]+/g, '')).filter(k => k && k.length > 20);
 
     if (keys.length === 0) {
-        console.error("❌ CRITICAL: No valid API keys (starting with AIza) found in Render environment!");
+        console.error("❌ CRITICAL: No valid API keys found in Render environment! Your bot will NOT respond.");
     } else {
         // Safe Debugging: Show first 4 and last 4 of keys in logs
         console.log(`📡 KeyManager initialized with ${keys.length} rotating keys.`);
