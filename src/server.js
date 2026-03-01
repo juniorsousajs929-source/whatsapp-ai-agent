@@ -191,6 +191,24 @@ async function doProcessAIContext(userId, userMessage, botId) {
         console.error(`❌ ERROR processing context for ${userId}:`, error.message);
     }
 }
+// --- LIVE LOGGING INTERCEPTOR ---
+const recentLogs = [];
+const originalLog = console.log;
+const originalError = console.error;
+function captureLog(type, args) {
+    try {
+        const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+        recentLogs.unshift(`[${type}] ${new Date().toISOString()} - ${msg}`);
+        if (recentLogs.length > 200) recentLogs.pop();
+    } catch (e) { }
+}
+console.log = function (...args) { captureLog('INFO', args); originalLog.apply(console, args); };
+console.error = function (...args) { captureLog('ERROR', args); originalError.apply(console, args); };
+
+process.on('uncaughtException', (err) => console.error('UNCAUGHT EXCEPTION:', err.message, err.stack));
+process.on('unhandledRejection', (reason) => console.error('UNHANDLED REJECTION:', reason));
+
+app.get('/debug-logs', (req, res) => res.type('text/plain').send(recentLogs.join('\n')));
 
 app.post('/webhook', async (req, res) => {
     const { user_id, message } = req.body;
