@@ -108,7 +108,7 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
       }
 
       const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash", // Confirmed available via API list
+        model: "gemini-1.5-flash", // Reverted to stable version
         systemInstruction: dynamicPrompt,
         generationConfig: {
           temperature: 1.0,
@@ -192,7 +192,8 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
   if (finalError.message.includes("API Key not found") || finalError.message.includes("invalid")) {
     return "(Error: Llave de IA inválida) Por favor verifica tus chaves en el Render.";
   }
-  return "Disculpa, tengo un pequeño problema técnico. ¿Me escribes de nuevo?";
+  // Se for outro erro (ex: 404 Model Not Found), propaga a exceção para o console
+  throw new Error(`AI_GEN_FAILED: ${finalError.message}`);
 }
 
 module.exports = { generateResponse };
