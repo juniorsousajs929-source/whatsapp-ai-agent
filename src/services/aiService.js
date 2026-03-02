@@ -108,7 +108,7 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
       }
 
       const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash", // Reverted to stable version
+        model: "gemini-2.5-flash", // Updated to cutting edge version for modern Google Accounts 2026
         systemInstruction: dynamicPrompt,
         generationConfig: {
           temperature: 1.0,
@@ -132,9 +132,10 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
       }
 
       let text;
+      let chat;
       try {
         console.log(`💬 Enviando chat com histórico tamanho: ${currentSessionHistory.length}`);
-        const chat = model.startChat({ history: currentSessionHistory });
+        chat = model.startChat({ history: currentSessionHistory });
         const result = await chat.sendMessage(processedMessage);
         text = result.response.text();
         console.log(`✅ IA Respondeu: ${text.substring(0, 50)}...`);
