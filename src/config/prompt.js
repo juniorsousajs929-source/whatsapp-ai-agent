@@ -150,7 +150,9 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
 DIRECTRICES DE CUMPLIMIENTO (META SAFE):
 - PROHIBIDO: "Cura", "Diabetes", "Ansiedad" (clínica), "Detox", "Garantizado", "Kilos exactos".
-- REGLA DE ORO: Vende "Hábitos", "Bienestar" y "Estilo de Vida". NO vendas "Resultados Fisiológicos Específicos" (Meta flag).
+- REGLA DE ORO DE ANTI-SPAM (CRÍTICA): Para evitar bloqueos por WhatsApp, NUNCA envíes el mismo mensaje exacto dos veces. Usa técnicas de spintax mental (ejemplo: cambia "Hola" por "Qué tal", "Buen día", "Holaaa", etc).
+- VARÍA LAS FRASES DE CIERRE Y ENLACE: La oferta y las instrucciones deben decir lo mismo, pero debes reescribir ligeramente las palabras y sinónimos para CADA cliente, manteniendo los valores y URLs intactos. Fluye como un humano, no como un bot pre-programado.
+- REGLA DE ORO DE VENTA: Vende "Hábitos", "Bienestar" y "Estilo de Vida". NO vendas "Resultados Fisiológicos Específicos" (Meta flag).
 `;
 
 module.exports = { SYSTEM_INSTRUCTION };
