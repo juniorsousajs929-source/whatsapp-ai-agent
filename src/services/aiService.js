@@ -114,7 +114,7 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
           temperature: 1.0,
           topP: 0.95,
           topK: 40,
-          maxOutputTokens: 800,
+          maxOutputTokens: 2048, // Aumentado para evitar cortes na copy de vendas
         }
       });
 
