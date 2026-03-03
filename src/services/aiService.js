@@ -189,11 +189,9 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
 
   // Handle errors after all attempts
   const finalError = lastError || new Error("Unknown error");
-  if (finalError.message.includes("429")) return "(Error: Límite excedido) Espera 1 minuto.";
-  if (finalError.message.includes("API Key not found") || finalError.message.includes("invalid")) {
-    return "(Error: Llave de IA inválida) Por favor verifica tus chaves en el Render.";
-  }
-  // Se for outro erro (ex: 404 Model Not Found), propaga a exceção para o console
+
+  // Propaga a exceção pura para o Console do Render, sem vazar erros técnicos 
+  // robóticos ("Límite excedido" / "Llave inválida") para o WhatsApp do cliente.
   throw new Error(`AI_GEN_FAILED: ${finalError.message}`);
 }
 
