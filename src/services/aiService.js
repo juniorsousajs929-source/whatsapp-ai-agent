@@ -131,10 +131,25 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
         currentSessionHistory = userHistory[sessionKey];
       }
 
+      // --- AMNESIA GUARD & SMART ANTI-LOOP ---
+      const userMsgLower = processedMessage.toLowerCase();
+      const hasNumbers = /\\d|peso|kilo|kg/i.test(userMsgLower);
+      const hasMoney = /dólar|dolar|peso|usd|precio|cuesta|valor/i.test(userMsgLower);
+
+      if (currentSessionHistory.length === 0) {
+        if (hasMoney && !processedMessage.includes("GENERATE_DISCOUNT")) {
+          processedMessage = `[SISTEMA: EL HISTORIAL DE CHAT SE BORRÓ PERO EL USUARIO PREGUNTA POR EL PRECIO. ESTÁ ESTRICTAMENTE PROHIBIDO REPETIR EL SALUDO. PASA DIRECTAMENTE AL PASO 8 (PRECIO).]\n\nUser: ${processedMessage}`;
+        } else if (hasNumbers && userMsgLower.length > 20) {
+          processedMessage = `[SISTEMA: URGENTE - TÚ YA LE PREGUNTASTE SU PESO, Y EL USUARIO TE ESTÁ CONTESTANDO AHORA SU PESO/EDAD. ESTÁ ESTRICTAMENTE PROHIBIDO VOLVER A PREGUNTAR CUÁNTO PESA. DEBES PASAR OBLIGATORIAMENTE AL PASO 4 (PREGUNTAR SU MAYOR OBSTÁCULO PARA ADELGAZAR).]\n\nUser: ${processedMessage}`;
+        } else if (userMsgLower.includes("obstáculo") || userMsgLower.includes("ansiedad") || userMsgLower.includes("comer")) {
+          processedMessage = `[SISTEMA: URGENTE - TÚ YA LE PREGUNTASTE SU OBSTÁCULO Y TE ESTÁ RESPONDIENDO. PASA AL PASO 5 y 6 (LA GRAN REVELACIÓN).]\n\nUser: ${processedMessage}`;
+        }
+      }
+
       let text;
       let chat;
       try {
-        console.log(`💬 Enviando chat com histórico tamanho: ${currentSessionHistory.length}`);
+        console.log(`💬 Enviando chat com histórico tamanho: ${currentSessionHistory.length} | UserMsg: ${processedMessage.substring(0, 40)}`);
         chat = model.startChat({ history: currentSessionHistory });
         const result = await chat.sendMessage(processedMessage);
         text = result.response.text();
@@ -173,9 +188,15 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
         .replace(/\u200D/g, '')
         .trim();
 
-      // Anti-Echo
+      // Anti-Echo & Anti-Loop Fallback
       if (text.toLowerCase().trim() === userMessage.toLowerCase().trim()) {
-        return "Entiendo perfectamente. Y cuéntame: ¿cuál es tu mayor dificultad hoy para perder peso?";
+        return "Entiendo perfectamente. Y cuéntame: ¿cuál es tu mayor obstáculo hoy para perder peso?";
+      }
+
+      // Hardcode block exact repetition loop for Step 3 (Weight Question)
+      if (currentSessionHistory.length === 0 && text.includes("¿Cuál es tu peso aproximado hoy") && hasNumbers) {
+        console.warn("⚠️ AI tried to repeat the weight question even when user gave numbers! Forcing override.");
+        return "¡Me parece perfecto! Te aseguro que VAMOS A LOGRARLO juntas. 💪 Ahora cuéntame con sinceridad... ¿cuál sientes que es tu mayor obstáculo en este momento? (¿Ansiedad por picar cosas dulces, sientes el metabolismo perezoso, o falta de tiempo?)";
       }
 
       return text;
