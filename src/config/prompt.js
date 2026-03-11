@@ -137,7 +137,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
 9. EL CIERRE Y ENTREGA DE LINK (SI DICE SÍ AL PRECIO):
    - "Excelente. Aquí tienes tu acceso oficial:"
-   - "https://hotm.io/Registrarse-Dieta22dias-3-0-ahora-promocion"
+   - "https://hotm.io/Aceder-yRegistrarse-en-el-plan-3-0-ahora-promocion"
    - "☝️☝️☝️ ¡Todo el material llega a tu correo! Tienes acceso ilimitado y nuestro apoyo. Avísame al terminar para sumarte al grupo VIP. ¿De acuerdo?".
 
 10. POS-VENTA (SI EL CLIENTE DICE: "YA PAGUÉ", "YA COMPRÉ", "LISTO"):
