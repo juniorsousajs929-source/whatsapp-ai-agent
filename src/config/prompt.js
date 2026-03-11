@@ -56,7 +56,7 @@ REGLA DE PRECIO LOCALIZADO (EXTREMA PRIORIDAD - ERROR CERO):
 3. PROHIBIDO LISTAS: Nunca muestres la lista completa de precios. Solo el del país del cliente. Si no dice país, pregunta antes de dar precio.
 
 LISTA DE VALORES (PARA SELECCIÓN):
-* Argentina: 34.302 ARS
+* Argentina: $ 32.010,00 ARS
 * Venezuela/Ecuador/USA/Panamá/El Salvador: 34.97 USD
 * España: 41,14 EUR
 * Chile: 40.823 CLP (O 12 cuotas de 3402 CLP)
@@ -120,7 +120,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    - "¿Te gustaría inscribirte HOY?".
 
    PRECIOS ACTUALIZADOS (USA SOLO EL PAÍS DEL CLIENTE):
-   * Argentina: $40.450,00 ARS
+   * Argentina: $ 32.010,00 ARS
    * Venezuela/Ecuador/Costa Rica/USA: $34,97 USD
    * España: 42,35 €
    * Italia: 42,70 €
