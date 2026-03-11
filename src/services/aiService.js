@@ -131,19 +131,20 @@ async function generateResponse(userId, userMessage, systemInstruction, botId = 
         currentSessionHistory = userHistory[sessionKey];
       }
 
-      // --- AMNESIA GUARD & SMART ANTI-LOOP ---
+      // --- SMART ANTI-LOOP & CONTEXT STEERING (ALWAYS ACTIVE) ---
       const userMsgLower = processedMessage.toLowerCase();
-      const hasNumbers = /\\d|peso|kilo|kg/i.test(userMsgLower);
+      const hasNumbers = /\\d|peso|kilo|kg|mido|estatura/i.test(userMsgLower);
       const hasMoney = /dólar|dolar|peso|usd|precio|cuesta|valor/i.test(userMsgLower);
 
-      if (currentSessionHistory.length === 0) {
-        if (hasMoney && !processedMessage.includes("GENERATE_DISCOUNT")) {
-          processedMessage = `[SISTEMA: EL HISTORIAL DE CHAT SE BORRÓ PERO EL USUARIO PREGUNTA POR EL PRECIO. ESTÁ ESTRICTAMENTE PROHIBIDO REPETIR EL SALUDO. PASA DIRECTAMENTE AL PASO 8 (PRECIO).]\n\nUser: ${processedMessage}`;
-        } else if (hasNumbers && userMsgLower.length > 20) {
-          processedMessage = `[SISTEMA: URGENTE - TÚ YA LE PREGUNTASTE SU PESO, Y EL USUARIO TE ESTÁ CONTESTANDO AHORA SU PESO/EDAD. ESTÁ ESTRICTAMENTE PROHIBIDO VOLVER A PREGUNTAR CUÁNTO PESA. DEBES PASAR OBLIGATORIAMENTE AL PASO 4 (PREGUNTAR SU MAYOR OBSTÁCULO PARA ADELGAZAR).]\n\nUser: ${processedMessage}`;
-        } else if (userMsgLower.includes("obstáculo") || userMsgLower.includes("ansiedad") || userMsgLower.includes("comer")) {
-          processedMessage = `[SISTEMA: URGENTE - TÚ YA LE PREGUNTASTE SU OBSTÁCULO Y TE ESTÁ RESPONDIENDO. PASA AL PASO 5 y 6 (LA GRAN REVELACIÓN).]\n\nUser: ${processedMessage}`;
-        }
+      // Inject aggressive steering commands into the user's message to force Gemini to advance
+      if (hasMoney && !processedMessage.includes("GENERATE_DISCOUNT")) {
+        processedMessage = `[SISTEMA: URGENTE - EL USUARIO PREGUNTA POR EL PRECIO O COMPRA. ESTÁ ESTRICTAMENTE PROHIBIDO REPETIR PASOS ANTERIORES. PASA DIRECTAMENTE AL PASO 8 (PRECIO) Y DI EL PRECIO PARA SU PAÍS.]\n\nUser: ${processedMessage}`;
+      } else if (hasNumbers && userMsgLower.length > 15 && !hasMoney) {
+        processedMessage = `[SISTEMA: URGENTE - EL USUARIO ACABA DE DARTE SU PESO/EDAD/MEDIDAS. ESTÁ ESTRICTAMENTE PROHIBIDO VOLVER A PREGUNTAR CUÁNTO PESA O REPETIR TU PRESENTACIÓN DEL PASO 2. DEBES PASAR OBLIGATORIAMENTE AL PASO 4 (PREGUNTAR SU MAYOR OBSTÁCULO PARA ADELGAZAR).]\n\nUser: ${processedMessage}`;
+      } else if (userMsgLower.includes("obstáculo") || userMsgLower.includes("ansiedad") || userMsgLower.includes("comer") || userMsgLower.includes("metabolismo") || userMsgLower.includes("tiempo")) {
+        processedMessage = `[SISTEMA: URGENTE - EL USUARIO TE ESTÁ RESPONDIENDO CÚAL ES SU MAYOR OBSTÁCULO. PASA DIRECTAMENTE AL PASO 5 y LUEGO AL 6 (LA GRAN REVELACIÓN). NO REPITAS NADA.]\n\nUser: ${processedMessage}`;
+      } else if (currentSessionHistory.length > 5 && (userMsgLower.includes("sí") || userMsgLower.includes("si") || userMsgLower.includes("quiero") || userMsgLower.includes("ok") || userMsgLower.includes("excelente"))) {
+        processedMessage = `[SISTEMA: EL USUARIO ESTÁ DE ACUERDO. SI ESTABAS EN EL PASO 7, PASA AL PASO 8. SI ESTABAS EN EL PASO 8, PASA AL PASO 9 (ENTREGA EL LINK). NO REPITAS EL GUIÓN.]\n\nUser: ${processedMessage}`;
       }
 
       let text;
