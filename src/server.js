@@ -261,35 +261,40 @@ app.post('/webhook', async (req, res) => {
         };
     }
 
-    // 3. Deduplication (Avoid ManyChat webhook retries or double triggers)
-    if (messageBuffers[userId].messages.includes(incomingMsg)) {
-        // If the exact same message is already in the buffer, ignore it to prevent aggregation duplication
-        console.log(`♻️ DEDUPLICATION: Ignoring duplicate message chunk for ${userId}: "${incomingMsg}"`);
-        return res.status(200).json({ status: 'ignored', message: 'Duplicate chunk detected.' });
+    // 3. Deduplication ONLY for exact same Rapid Retries (ManyChat Bug)
+    // We only ignore if the exact same message was sent multiple times in the SAME buffer window
+    const isExactDuplicateChunk = messageBuffers[userId].messages.includes(incomingMsg);
+    
+    if (!isExactDuplicateChunk) {
+        // Only push if it's new text (e.g. "Junior" then "Mexico")
+        messageBuffers[userId].messages.push(incomingMsg);
+        messageBuffers[userId].botId = bot_id; // Update bot_id to latest
+    } else {
+        console.log(`♻️ MINOR DEDUPLICATION: Ignoring exact duplicate chunk inside buffer window: "${incomingMsg}"`);
     }
 
-    messageBuffers[userId].messages.push(incomingMsg);
-    messageBuffers[userId].botId = bot_id; // Update bot_id to latest
-
-    // 4. Reset Timer (Debounce)
+    // 4. Reset Timer (Debounce - Wait for user to finish typing)
     if (messageBuffers[userId].timer) {
         clearTimeout(messageBuffers[userId].timer);
     }
 
     messageBuffers[userId].timer = setTimeout(() => {
-        // TIMEOUT REACHED: Process everything
-        const finalContext = messageBuffers[userId].messages.join('\n'); // Combine with newlines
+        // TIMEOUT REACHED (User stopped typing for 7 seconds)
+        // Extract data before deleting
+        const finalContext = messageBuffers[userId].messages.join('\\n'); // Combine chunks with newlines
         const finalBotId = messageBuffers[userId].botId;
 
-        // Clean up buffer BEFORE processing to allow new messages to start a new buffer
+        // Clean up buffer BEFORE processing
         delete messageBuffers[userId];
 
-        // Trigger AI Background Process
-        processAIContext(userId, finalContext, finalBotId);
+        // Trigger AI Background Process ONCE with the full context
+        if (finalContext.trim() !== "") {
+            processAIContext(userId, finalContext, finalBotId);
+        }
     }, 7000); // 7 Seconds Wait Time
 
     // 5. Respond Immediately to ManyChat (Avoid Timeout)
-    res.status(200).json({ status: 'buffered', message: 'Message received and buffering.' });
+    res.status(200).json({ status: 'buffered', message: 'Message chunk received and buffering.' });
 });
 
 // REMARKETING TRIGGER ENDPOINT (Called by ManyChat after 19h Smart Delay)
