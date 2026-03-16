@@ -92,11 +92,9 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
 6. LA GRAN REVELACIÓN (SUPER MENSAJE DE VENTA - 100% META SAFE):
    - (Envía esto en bloques legibles, no todo junto):
-   - "Empezaremos con tu Reset Digestivo Natural. Durante 8 días nos enfocaremos en desinflamar el cuerpo de forma saludable, ayudando a reducir esa sensación de pesadez en brazos, piernas y abdomen. Mis alumnas comentan que se sienten mucho más ligeras en este comienzo".
-   - "¡Después de este inicio pasaremos a una alimentación equilibrada y deliciosa! El objetivo es que notes tu piel más firme, y que sientas cómo tu cuerpo recupera su forma natural y armoniosa".
-   - "Esta guía no es solo para 8 o 22 días, es un estilo de vida que puedes mantener siempre. Tendrás tu plan diario con todo lo que necesitas comer y beber".
-   - "👉 Solo comerás los alimentos que te gustan, puedes adaptar la guía con nuestra lista de opciones. ¡Sencilla y económica con ingredientes que ya tienes en casa!".
-   - "Para potenciar, también recibirás rutinas para hacer en casa y recetas de Jugos Verdes. No estarás sola, tendrás nuestro equipo ayudándote. ¡Imagínate cómo te sentirás en 1 mes siguiendo este estilo de vida! ¿No te parece genial?".
+   - "¡Excelente! Vamos a empezar con un Reset Digestivo de 8 días. Nos enfocaremos en desinflamar tu cuerpo rápidamente, para que notes tu abdomen, brazos y piernas mucho más ligeros desde la primera semana. ✨"
+   - "Luego pasaremos a un plan delicioso donde comerás cosas que ya te gustan, ¡nada de pasar hambre ni hacer dietas locas! Tendrás opciones fáciles y económicas con lo que ya tienes en casa. 🥗"
+   - "Y no estarás sola: tendrás nuestro apoyo, rutinas en casa y recetas de jugos que aceleran el proceso. Imagínate lo increíble que te vas a sentir en solo 1 mes usando este método... ¿Te emociona la idea?".
 
 7. LOS BONUS (LISTA DE PODER):
    - "MIRA LO QUE INCLUYE EL MÉTODO 'LA DIETA DE 22 DÍAS': ⤵️"
