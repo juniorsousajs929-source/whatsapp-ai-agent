@@ -103,31 +103,43 @@ const messageBuffers = {};
 // Stores: { userId: { lastMessage: "text", timestamp: 123456 } }
 const processedMessagesCache = {};
 
-// CONCURRENCY LOCKS (Prevent MongoDB Race Conditions & AI Double Replies)
-// Stores: { userId: Promise }
-const userLocks = new Map();
+// CONCURRENCY QUEUE (Strict FIFO processing per user)
+const userQueues = new Map();
+const userProcessingFlags = new Map();
 
 async function processAIContext(userId, userMessage, botId = 'default') {
-    // 1. Get current lock for user or a resolved promise
-    let currentLock = userLocks.get(userId) || Promise.resolve();
+    // 1. Initialize queue and flag if not exists
+    if (!userQueues.has(userId)) userQueues.set(userId, []);
+    if (!userProcessingFlags.has(userId)) userProcessingFlags.set(userId, false);
 
-    // 2. Create a new lock resolver
-    let releaseLock;
-    const nextLock = new Promise(resolve => { releaseLock = resolve; });
+    // 2. Add message to user's queue
+    userQueues.get(userId).push({ userMessage, botId });
 
-    // 3. Chain this execution AFTER the current lock finishes
-    userLocks.set(userId, currentLock.then(async () => {
+    // 3. Start processing if not already running
+    if (!userProcessingFlags.get(userId)) {
+        await processUserQueue(userId);
+    }
+}
+
+async function processUserQueue(userId) {
+    userProcessingFlags.set(userId, true);
+    const queue = userQueues.get(userId);
+
+    while (queue.length > 0) {
+        const { userMessage, botId } = queue.shift(); // Get oldest message
         try {
             await doProcessAIContext(userId, userMessage, botId);
-        } finally {
-            releaseLock(); // 4. Release lock for next task
+        } catch (e) {
+            console.error(`❌ Queue Error for ${userId}:`, e);
         }
-    }));
+    }
+
+    userProcessingFlags.set(userId, false);
 }
 
 async function doProcessAIContext(userId, userMessage, botId) {
     try {
-        console.log(`\n🧠 [${botId}] Processing Aggregated Context for ${userId}: "${userMessage}"`);
+        console.log(`\n🧠 [${botId}] Processing Aggregated Context for ${userId}: "${userMessage.substring(0, 50)}..."`);
 
         // --- 1. OPT-OUT CHECK (STOP) ---
         const stopKeywords = ['stop', 'parar', 'sair', 'cancelar', 'basta', 'no mas', 'no más'];
