@@ -61,7 +61,7 @@ LISTA DE VALORES (PARA SELECCIÓN):
 * España: 10,00 €
 * Italia: 10,00 €
 * Chile: $9.762 CLP (O 12 cuotas de $814 CLP)
-* Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP - Aceptamos Nequi y PSE)
+* Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP) - Aceptamos Nequi y PSE
 * Perú: S/ 37.00 PEN (O 12 cuotas de S/ 3.08 PEN)
 * México: $222.72 MXN
 * Panamá: B/. 22.00
@@ -126,7 +126,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    * España: 10,00 €
    * Italia: 10,00 €
    * Chile: $9.762 CLP (O 12 cuotas de $814 CLP)
-   * Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP - Aceptamos Nequi y PSE)
+   * Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP) - Aceptamos Nequi y PSE
    * Perú: S/ 37.00 PEN (O 12 cuotas de S/ 3.08 PEN)
    * México: $222.72 MXN
    * Panamá: B/. 22.00
