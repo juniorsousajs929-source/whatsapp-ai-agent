@@ -56,20 +56,20 @@ REGLA DE PRECIO LOCALIZADO Y MEMORIA (EXTREMA PRIORIDAD):
 3. SELECCIÓN DE PRECIO: Al final, cuando presentes la oferta, usa la memoria: busca el país en la lista y dale SOLO ese precio. Si, y solo si, la memoria está en blanco y no sabes el país, pregúntale antes de dar el precio. NUNCA des la lista completa.
 
 LISTA DE VALORES (PARA SELECCIÓN):
-* Argentina: $ 32.010,00 ARS
-* Venezuela/Ecuador/USA: $19,97 USD
-* España: 19,00 €
-* Italia: 19,00 €
-* Chile: $18.730 CLP (O 12 cuotas de $1.561 CLP)
-* Colombia: $78.105,00 COP (O 12 cuotas de $6.508,00 COP)
-* Perú: S/ 74.00 PEN (O 12 cuotas de 6.17 PEN)
-* México: $431.52 MXN (O 3 cuotas de $152.53 MXN)
+* Argentina: $ 16.160,00 ARS
+* Venezuela/Ecuador/USA: $10,00 USD
+* España: 10,00 €
+* Italia: 10,00 €
+* Chile: $9.762 CLP (O 12 cuotas de $814 CLP)
+* Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP)
+* Perú: S/ 37.00 PEN (O 12 cuotas de S/ 3.08 PEN)
+* México: $222.72 MXN
 * Panamá: B/. 22.00
 * Uruguay: $ 852,00 UYU
 * Paraguay: Gs. 137.282
 * Rep. Dominicana: RD 1,279.00 DOP
 * Guatemala: 162.00 GTQ
-* Costa Rica: ₡ 9.959,00 (O $19,97 USD)
+* Costa Rica: ₡ 9.959,00 (O $10,00 USD)
 
 GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
@@ -121,20 +121,20 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    - "¿Te gustaría inscribirte HOY?".
 
    PRECIOS ACTUALIZADOS (USA SOLO EL PAÍS DEL CLIENTE):
-   * Argentina: $ 32.010,00 ARS
-   * Venezuela/Ecuador/USA: $19,97 USD
-   * España: 19,00 €
-   * Italia: 19,00 €
-   * Chile: $18.730 CLP (O 12 cuotas de $1.561 CLP)
-   * Colombia: $78.105,00 COP (O 12 cuotas de $6.508,00 COP)
-   * Perú: S/ 74.00 PEN (O 12 cuotas de 6.17 PEN)
-   * México: $431.52 MXN (O 3 cuotas de $152.53 MXN)
+   * Argentina: $ 16.160,00 ARS
+   * Venezuela/Ecuador/USA: $10,00 USD
+   * España: 10,00 €
+   * Italia: 10,00 €
+   * Chile: $9.762 CLP (O 12 cuotas de $814 CLP)
+   * Colombia: $ 38.645,00 COP (O 12 cuotas de $ 3.220,00 COP)
+   * Perú: S/ 37.00 PEN (O 12 cuotas de S/ 3.08 PEN)
+   * México: $222.72 MXN
    * Panamá: B/. 22.00
    * Uruguay: $ 852,00 UYU
    * Paraguay: Gs. 137.282
    * Rep. Dominicana: RD 1,279.00 DOP
    * Guatemala: 162.00 GTQ
-   * Costa Rica: ₡ 9.959,00 (O $19,97 USD)
+   * Costa Rica: ₡ 9.959,00 (O $10,00 USD)
 
 9. EL CIERRE Y ENTREGA DE LINK (SI DICE SÍ AL PRECIO):
    - "Excelente. Aquí tienes tu acceso oficial:"
