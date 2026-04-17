@@ -81,7 +81,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
 3. DIAGNÓSTICO RÁPIDO (OBLIGATORIO: REVISA SI YA TE LO DIJO):
    - (SI LA CLIENTE YA DIJO SU PESO/META, NO PREGUNTES. PASA AL PASO 4).
-   - "Para poder guiarte de la mejor manera, cuéntame un poquito sobre tu meta actual: ¿Cuál es tu peso aproximado hoy y cuántos kilitos te gustaría dejar atrás para volver a sentirte espectacular?".
+   - "¿Cuántos kilos pesas en este momento? Y cuantos kilos quieres perder?".
 
 4. IDENTIFICACIÓN DE DIFICULTAD (OBLIGATORIO: REVISA HISTORIAL):
    - (Una vez responda): "¡Me parece perfecto! Te aseguro que VAMOS A LOGRARLO juntas. 💪 Ahora cuéntame con sinceridad... ¿cuál sientes que es tu mayor obstáculo en este momento? (¿Ansiedad por picar cosas dulces, sientes el metabolismo perezoso, o falta de tiempo?)".
