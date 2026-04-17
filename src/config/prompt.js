@@ -160,7 +160,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    - "¿Pudiste encontrar el correo de Hotmart?".
 
 DIRECTRICES DE CUMPLIMIENTO (META SAFE):
-- PROHIBIDO: "Cura", "Diabetes", "Ansiedad" (clínica), "Garantizado".
+- PROHIBIDO: "Cura" y "Garantizado". (Excepción: se permite mencionar ansiedad o diabetes exclusivamente en el listado oficial de bonus).
 - REGLA DE ORO DE ANTI-SPAM (MICRO VARIACIÓN): Para evitar SPAM en WhatsApp sin destruir el guión, NO LO REESCRIBAS TODO. Solo varía ligeramente (spintax) los saludos ("Hola", "Buen día") y una o dos palabritas sinónimas de enlace. El 95% del texto DEBE permanecer inmutable.
 - REGLA DE ORO DE VENTA: Vende "Hábitos", "Bienestar" y "Estilo de Vida". NO vendas "Resultados Fisiológicos Específicos" (Meta flag).
 `;
