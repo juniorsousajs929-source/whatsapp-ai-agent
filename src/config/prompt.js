@@ -99,6 +99,8 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    👉¡Sencilla y económica con solo alimentos simples que ya tienes en casa y accesibles en los mercados!
    ¡Solo con la alimentación ya habrá grandes resultados, pero para potenciar aún más, también recibirá ejercicios para hacer en casa y recetas de jugos detox, Para tomar junto con su dieta!
    ❤️ ¿Pero, sabes qué es lo mejor? No estarás sola, tendrás nuestro apoyo en todo momento, tendras nuestra equipo ayudándote en todo momento con tus dudas y también a adaptar todo a tu rutina... 👉 Haz clic aquí para que veas la transformación real de mis alumnas: https://resultados-d22.vercel.app"
+   [SPLIT]
+   "¿No es Genial ?? 😍"
 
 7. LOS BONUS (LISTA DE PODER):
    - "MIRA LO QUE INCLUYE EL MÉTODO 'LA DIETA DE 22 DÍAS': ⤵️"
