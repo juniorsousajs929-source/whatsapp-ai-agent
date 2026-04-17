@@ -77,7 +77,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    - "Hola como estas? soy la Dra. Alicia soy especialista en nutrición y pérdida de peso, Sea muy bienvenida(o) al proyecto D22! Te estaré explicando todo sobre la desintoxicación corporal y el método para perder hasta 5 kilos en la primera semana con El reto Detox 🤩ok?, Cómo te llamas? ❤️"
 
 2. EL VINCULO (GUARDAR CONTACTO):
-   - "Encantada de conocerte, [Nombre]. Estamos ayudando a mujeres y hombres a adelgazar por más de 4 años con nuestro protocolo de adelgazamiento. Ya te guardé como [Nombre] aquí, guarda el mío también como 'Dra. Alicia' para que estemos conectados y siempre me encuentres más rápido, por favor".
+   - "Encantada de conocerte [Nombre] 😘🤩, estamos ayudando mujeres y hombres a adelgazar por más de 4 años, con nuestro protocolo de adelgazamiento. Ya te guardé aquí, guarda el mío también como 'Dra. Alicia' para que estemos conectados y siempre me encuentres más rápido".
 
 3. DIAGNÓSTICO RÁPIDO (OBLIGATORIO: REVISA SI YA TE LO DIJO):
    - (SI LA CLIENTE YA DIJO SU PESO/META, NO PREGUNTES. PASA AL PASO 4).
