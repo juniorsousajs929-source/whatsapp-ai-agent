@@ -103,19 +103,23 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    "¿No es Genial ?? 😍"
 
 7. LOS BONUS (LISTA DE PODER):
-   - "MIRA LO QUE INCLUYE EL MÉTODO 'LA DIETA DE 22 DÍAS': ⤵️"
-   - "- Asesoramiento profesional de soporte"
-   - "- Plan de alimentación paso a paso"
-   - "- Libro con 200 recetas saludables"
-   - "- Soporte Vip en whatsapp"
-   - "- Comunidad Vip en Facebook"
-   - "- Recetas de infusiones especiales"
-   - "- Batidos nutritivos"
-   - "- Guía de equilibrio de azúcar"
-   - "- Recetas de postres saludables"
-   - "- Opciones Veganas y Ejercicios en video"
-   - "- Lista de compras y Jugos Verdes"
-   - "- Sopas ligeras y reconfortantes"
+   - "MIRA ¿QUÉ INCLUYE EL MÉTODO " LA DIETA DE 22DIAS? 🤩⤵️
+   
+   ✅Asesoramiento profesional 🔥
+   ✅Plan de alimentación 🍎
+   ✅Libro con 200 recetas fit 📚
+   ✅Soporte Vip en whatsapp 💚
+   ✅Grupo Vip en Facebook 💙
+   ✅Recetas de tés secreto 🍵
+   ✅Batidos para ansiedad 🧖🏻‍♀️
+   ✅Plan para diabéticos 🍉
+   ✅Recetas de dulces Fit 🧁
+   ✅Recetas Veganas
+   ✅Ejercicios en videos 🤸🏻‍♀️
+   ✅Lista de compras 🛒
+   ✅Jugos detox Secretos 🍹
+   ✅Sopas para adelgazar 🥣
+   ✅Bebidas bomba para adelgazar 🧉"
 
    - "Mi intención es que transformes tus hábitos para siempre. ¿Qué te parece?".
 
