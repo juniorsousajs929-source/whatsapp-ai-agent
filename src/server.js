@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const fs = require('fs');
+const path = require('path');
 const { generateResponse } = require('./services/aiService');
 const { setCustomFieldByName } = require('./services/manychatService');
 const dbService = require('./services/dbService'); // MongoDB Integration
@@ -12,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(express.static('public')); // Serve Verification Site (Force Deploy)
+app.use(express.static(path.join(__dirname, '../public'))); // Serve Verification Site (Force Deploy)
 
 // Helper for human-like delay
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
