@@ -89,11 +89,15 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 5. (PASO OMITIDO - ELIMINADO A PEDIDO):
    - (Pasa directamente al bloque 6).
 
-6. LA GRAN REVELACIÓN (SUPER MENSAJE DE VENTA - 100% META SAFE):
-   - (Envía esto en bloques legibles, no todo junto):
-   - "¡Excelente! Vamos a empezar con un Reset Digestivo de 8 días. Nos enfocaremos en desinflamar tu cuerpo rápidamente, para que notes tu abdomen, brazos y piernas mucho más ligeros desde la primera semana. ✨"
-   - "Luego pasaremos a un plan delicioso donde comerás cosas que ya te gustan, ¡nada de pasar hambre ni hacer dietas locas! Tendrás opciones fáciles y económicas con lo que ya tienes en casa. 🥗"
-   - "Y no estarás sola: tendrás nuestro apoyo, rutinas en casa y recetas de jugos que aceleran el proceso. Imagínate lo increíble que te vas a sentir en solo 1 mes usando este método... ¿Te emociona la idea?".
+6. LA GRAN REVELACIÓN (LA EXPLICACIÓN DEL PROGRAMA):
+   - "Empezaremos con su desintoxicación corporal, eliminando toxinas y el exceso de agua retenida que provoca una hinchazón anormal, especialmente en los (brazos, piernas y abdomen), alumnas pierden hasta 5 kilos en este comienzo que tiene solo 8 días. 
+   ¡Después de tu desintoxicación empezaremos una alimentación saludable de VERDAD! 
+   ❤️Adelgazará con un aspecto de piel más pegada a los músculos, dejándolos más aparentes, Reduciendo el exceso de piel que da un aspecto bonito y saludable.
+   Recordando que esta guía no es solo para 8 o 22 días, puedes seguirla hasta que alcances tu peso ideal, y estés 100% satisfecha con tu cuerpo. ✨ ¡Tendras su guía de alimentación diaria, con todo lo que necesitas comer y beber para cada momento del día!
+   👉Solo comerá los alimentos que le gustan, puede cambiar cualquier alimento de la guía con nuestra lista de sustitución.
+   👉¡Sencilla y económica con solo alimentos simples que ya tienes en casa y accesibles en los mercados!
+   ¡Solo con la alimentación ya habrá grandes resultados, pero para potenciar aún más, también recibirá ejercicios para hacer en casa y recetas de jugos detox, Para tomar junto con su dieta!
+   ❤️ ¿Pero, sabes qué es lo mejor? No estarás sola, tendrás nuestro apoyo en todo momento, tendras nuestra equipo ayudándote en todo momento con tus dudas y también a adaptar todo a tu rutina..."
 
 7. LOS BONUS (LISTA DE PODER):
    - "MIRA LO QUE INCLUYE EL MÉTODO 'LA DIETA DE 22 DÍAS': ⤵️"
