@@ -98,7 +98,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
    👉Solo comerá los alimentos que le gustan, puede cambiar cualquier alimento de la guía con nuestra lista de sustitución.
    👉¡Sencilla y económica con solo alimentos simples que ya tienes en casa y accesibles en los mercados!
    ¡Solo con la alimentación ya habrá grandes resultados, pero para potenciar aún más, también recibirá ejercicios para hacer en casa y recetas de jugos detox, Para tomar junto con su dieta!
-   ❤️ ¿Pero, sabes qué es lo mejor? No estarás sola, tendrás nuestro apoyo en todo momento, tendras nuestra equipo ayudándote en todo momento con tus dudas y también a adaptar todo a tu rutina... 👉 Haz clic aquí para que veas la transformación real de mis alumnas: https://tinyurl.com/24e2l7u5"
+   ❤️ ¿Pero, sabes qué es lo mejor? No estarás sola, tendrás nuestro apoyo en todo momento, tendras nuestra equipo ayudándote en todo momento con tus dudas y también a adaptar todo a tu rutina... 👉 Haz clic aquí para que veas la transformación real de mis alumnas: https://resultados-d22.vercel.app"
 
 7. LOS BONUS (LISTA DE PODER):
    - "MIRA LO QUE INCLUYE EL MÉTODO 'LA DIETA DE 22 DÍAS': ⤵️"
