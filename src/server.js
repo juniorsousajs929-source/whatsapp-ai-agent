@@ -195,9 +195,17 @@ async function doProcessAIContext(userId, userMessage, botId) {
 
         console.log(`🤖 AI Reply to ${userId}: "${aiResponse}"`);
 
-        // --- 5. SEND TO MANYCHAT ---
-        // Update Custom Field 'teste_robo'
-        await setCustomFieldByName(userId, 'teste_robo', aiResponse, botId);
+        // --- 5. SEND TO MANYCHAT (With SPLIT logic support) ---
+        // If AI outputs [SPLIT], we break the message to create separate WhatsApp chat bubbles.
+        const parts = aiResponse.split('[SPLIT]');
+        for (let i = 0; i < parts.length; i++) {
+            const chunk = parts[i].trim();
+            if (chunk) {
+                await setCustomFieldByName(userId, 'teste_robo', chunk, botId);
+                // Wait 6 seconds between chunks so the user can read and ManyChat triggers sequentially
+                if (i < parts.length - 1) await wait(6000); 
+            }
+        }
 
     } catch (error) {
         console.error(`❌ ERROR processing context for ${userId}:`, error.message);

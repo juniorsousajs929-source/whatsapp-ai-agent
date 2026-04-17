@@ -91,6 +91,7 @@ GUIÓN ESTRATÉGICO DE VENTA (EL FLUJO DE ORO - CHAMPION COPY):
 
 6. LA GRAN REVELACIÓN (LA EXPLICACIÓN DEL PROGRAMA):
    - "Empezaremos con su desintoxicación corporal, eliminando toxinas y el exceso de agua retenida que provoca una hinchazón anormal, especialmente en los (brazos, piernas y abdomen), alumnas pierden hasta 5 kilos en este comienzo que tiene solo 8 días. 
+   [SPLIT]
    ¡Después de tu desintoxicación empezaremos una alimentación saludable de VERDAD! 
    ❤️Adelgazará con un aspecto de piel más pegada a los músculos, dejándolos más aparentes, Reduciendo el exceso de piel que da un aspecto bonito y saludable.
    Recordando que esta guía no es solo para 8 o 22 días, puedes seguirla hasta que alcances tu peso ideal, y estés 100% satisfecha con tu cuerpo. ✨ ¡Tendras su guía de alimentación diaria, con todo lo que necesitas comer y beber para cada momento del día!
